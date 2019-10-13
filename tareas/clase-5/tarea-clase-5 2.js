@@ -22,23 +22,21 @@ $botonCalcular.onclick = function()
 //cuando el usuario haga click en el botón "calcular", mostrar el salario mensual
 // en una caja de texto deshabilitada. --> <input type="text" disabled id="salario-mensual"/>
 
-function calcularSalarioMensual(salarioAnual){
-  return salarioAnual / 12;
-}
-
-document.querySelector("#calcular-salario-mensual").onclick = function $calcularSalarioMensual(){
-  const $salarioAnual = Number(document.querySelector("#salario-anual").value);
-  const $salarioMensual = calcularSalarioMensual($salarioAnual);
-  document.querySelector("#salario-mensual").value = $salarioMensual;
-  return false;
-}
-
 //TAREA: En otro archivo html (no Index) y otro archivo js (no tarea-clase-5.js),
 // creá un formulario que capture el primer nombre, segundo nombre, apellido/s y edad del usuario
 // también vamos a crear un <h1> que diga Bienvenido!
 // vas a crear un botón de acción que una vez que lo apretás, va a
 // mostrar toda la información junta en un campo de texto
 // Y va a cambiar el <h1> para decir "Bienvenido, nombreDeUsuario"!
+
+document.querySelector("#mostrar-informacion-usuario").onclick = function(){
+  const $nombreUsuario = document.querySelector("#nombre-usuario").value;
+  const $segundoNombreUsuario = document.querySelector("#segundo-nombre-usuario").value;
+  const $apellidoUsuario = document.querySelector("#apellido-usuario").value;
+  const $edadUsuario = Number(document.querySelector("#edad-usuario").value);
+  document.querySelector("#informacion-ingresada").value = (`${$nombreUsuario} ${$segundoNombreUsuario} ${$apellidoUsuario} ${$edadUsuario}`);
+  document.querySelector("h1").textContent = `Bienvenido ${$nombreUsuario}!`;
+}
 
 /*
 Ejemplo form:

@@ -115,7 +115,12 @@ footer a:hover {
 }
 
 .mensaje-bienvenida{
-    color:red;
+    color:darkblue;
+}
+
+#informacion-ingresada{
+    width: 400px;
+    height: 40px;
 }
 
 #surprise {
