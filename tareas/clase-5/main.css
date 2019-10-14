@@ -118,6 +118,14 @@ footer a:hover {
     color:darkblue;
 }
 
+.lista-de-numeros{
+    font-size: 16px;
+}
+
+#duracion-primer-video{
+    margin-left: 10px;
+}
+
 #informacion-ingresada{
     width: 400px;
     height: 40px;
