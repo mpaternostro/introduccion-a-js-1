@@ -29,6 +29,15 @@ $botonCalcular.onclick = function()
 // mostrar toda la información junta en un campo de texto
 // Y va a cambiar el <h1> para decir "Bienvenido, nombreDeUsuario"!
 
+document.querySelector("#mostrar-informacion-usuario").onclick = function(){
+  const $nombreUsuario = document.querySelector("#nombre-usuario").value;
+  const $segundoNombreUsuario = document.querySelector("#segundo-nombre-usuario").value;
+  const $apellidoUsuario = document.querySelector("#apellido-usuario").value;
+  const $edadUsuario = Number(document.querySelector("#edad-usuario").value);
+  document.querySelector("#informacion-ingresada").value = (`${$nombreUsuario} ${$segundoNombreUsuario} ${$apellidoUsuario} ${$edadUsuario}`);
+  document.querySelector("h1").textContent = `Bienvenido ${$nombreUsuario}!`;
+}
+
 /*
 Ejemplo form:
   <form id="entrada-bar" onsubmit="return false;">
@@ -48,51 +57,6 @@ Ejemplo form:
 // cada dato.
 // al apretar el botón "Calcular tiempo total", debe mostrar en un
 // <strong> pre-creado el tiempo total de los videos.
-
-/* document.querySelector("#boton-nuevo-video").onclick = function () {
-  console.log("clickeaste")
-  const $labelNuevoVideo = document.createElement("label");
-  $labelNuevoVideo.setAttribute("for", "duracion-segundo-video");
-  $labelNuevoVideo.innerHTML = "Video 2";
-  const duracionHoras = Number(document.createElement("input", placeholder = "Ingrese horas", id="duracion-segundo-video"));
-  const duracionMinutos = Number(document.createElement("input", placeholder = "Ingrese minutos", id="duracion-segundo-video"));
-  const duracionSegundos = Number(document.createElement("input", placeholder = "Ingrese segundos", id="duracion-segundo-video"));
-  document.querySelector("div").appendChild($labelNuevoVideo);
-  $labelNuevoVideo.appendChild(duracionHoras);
-  $labelNuevoVideo.appendChild(duracionMinutos);
-  $labelNuevoVideo.appendChild(duracionSegundos);
-}
-*/
-
-document.querySelector("#boton-calcular-duracion").onclick = function () {
-  const $horasPrimerVideo = Number(document.querySelector("#horas-primer-video").value);
-  const $minutosPrimerVideo = Number(document.querySelector("#minutos-primer-video").value);
-  const $segundosPrimerVideo = Number(document.querySelector("#segundos-primer-video").value);
-  const $horasSegundoVideo = Number(document.querySelector("#horas-segundo-video").value);
-  const $minutosSegundoVideo = Number(document.querySelector("#minutos-segundo-video").value);
-  const $segundosSegundoVideo = Number(document.querySelector("#segundos-segundo-video").value);
-  const $horasTercerVideo = Number(document.querySelector("#horas-tercer-video").value);
-  const $minutosTercerVideo = Number(document.querySelector("#minutos-tercer-video").value);
-  const $segundosTercerVideo = Number(document.querySelector("#segundos-tercer-video").value);
-  calcularTiempoTotalVideos($horasPrimerVideo, $horasSegundoVideo, $horasTercerVideo, $minutosPrimerVideo, $minutosSegundoVideo, $minutosTercerVideo, $segundosPrimerVideo, $segundosSegundoVideo, $segundosTercerVideo);
-}
-
-function calcularTiempoTotalVideos(hora1, hora2, hora3, minutos1, minutos2, minutos3, segundos1, segundos2, segundos3) {
-  let horas = hora1 + hora2 + hora3;
-  let minutos = minutos1 + minutos2 + minutos3;
-  let segundos = segundos1 + segundos2 + segundos3;
-  while (segundos > 60) {
-    segundos -= 60;
-    minutos++;
-  }
-  while (minutos > 60) {
-    minutos -= 60;
-    horas++;
-  }
-  console.log(horas, minutos, segundos);
-  const $duracionTotal = (`La duración total de los videos es ${horas} horas, ${minutos} minutos y ${segundos} segundos.`);
-  document.querySelector("#duracion-total").value = $duracionTotal;
-}
 
 //TAREA: En otro archivo distinto,
 // Crear una lista de <ol> y <li> que contengan sólo números.
