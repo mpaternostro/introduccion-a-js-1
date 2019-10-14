@@ -65,16 +65,16 @@ Ejemplo form:
 */
 
 document.querySelector("#boton-calcular-duracion").onclick = function () {
-  const $horasPrimerVideo = Number(document.querySelector("#horas-primer-video").value);
-  const $minutosPrimerVideo = Number(document.querySelector("#minutos-primer-video").value);
-  const $segundosPrimerVideo = Number(document.querySelector("#segundos-primer-video").value);
-  const $horasSegundoVideo = Number(document.querySelector("#horas-segundo-video").value);
-  const $minutosSegundoVideo = Number(document.querySelector("#minutos-segundo-video").value);
-  const $segundosSegundoVideo = Number(document.querySelector("#segundos-segundo-video").value);
-  const $horasTercerVideo = Number(document.querySelector("#horas-tercer-video").value);
-  const $minutosTercerVideo = Number(document.querySelector("#minutos-tercer-video").value);
-  const $segundosTercerVideo = Number(document.querySelector("#segundos-tercer-video").value);
-  calcularTiempoTotalVideos($horasPrimerVideo, $horasSegundoVideo, $horasTercerVideo, $minutosPrimerVideo, $minutosSegundoVideo, $minutosTercerVideo, $segundosPrimerVideo, $segundosSegundoVideo, $segundosTercerVideo);
+  const horasPrimerVideo = Number(document.querySelector("#horas-primer-video").value);
+  const minutosPrimerVideo = Number(document.querySelector("#minutos-primer-video").value);
+  const segundosPrimerVideo = Number(document.querySelector("#segundos-primer-video").value);
+  const horasSegundoVideo = Number(document.querySelector("#horas-segundo-video").value);
+  const minutosSegundoVideo = Number(document.querySelector("#minutos-segundo-video").value);
+  const segundosSegundoVideo = Number(document.querySelector("#segundos-segundo-video").value);
+  const horasTercerVideo = Number(document.querySelector("#horas-tercer-video").value);
+  const minutosTercerVideo = Number(document.querySelector("#minutos-tercer-video").value);
+  const segundosTercerVideo = Number(document.querySelector("#segundos-tercer-video").value);
+  calcularTiempoTotalVideos(horasPrimerVideo, horasSegundoVideo, horasTercerVideo, minutosPrimerVideo, minutosSegundoVideo, minutosTercerVideo, segundosPrimerVideo, segundosSegundoVideo, segundosTercerVideo);
 }
 
 function calcularTiempoTotalVideos(hora1, hora2, hora3, minutos1, minutos2, minutos3, segundos1, segundos2, segundos3) {
