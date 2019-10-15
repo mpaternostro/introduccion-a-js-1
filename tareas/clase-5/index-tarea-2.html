@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Clase 5</title>
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=GFS+Didot">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="mensaje-bienvenida">Bienvenido</h1>
+    </header>
+
+    <main>
+        <form>
+                <p>
+                    <label for="nombre-usuario">Nombre</label>
+                    <input id="nombre-usuario" type="text" autofocus required/>
+                </p>
+                <p>
+                    <label for="segundo-nombre-usuario">Segundo Nombre</label>
+                    <input id="segundo-nombre-usuario" type="text"/>
+                </p>
+                <p>
+                    <label for="apellido-usuario">Apellido</label>
+                    <input id="apellido-usuario" type="text" required/>
+                </p>
+                <p>
+                    <label for="edad-usuario">Edad</label>
+                    <input id="edad-usuario" type="number" required/>
+                </p>
+                <p>
+                    <button type="button" id="mostrar-informacion-usuario" >Mostrar información ingresada</button>
+                    <button type="reset">Limpiar</button>
+                </p>
+            <p>
+                <label for="informacion-ingresada">Tus datos personales:</label>
+                <p><input id="informacion-ingresada" type="text" disabled></p>
+            </p>
+        </form>
+    </main>
+
+    <script type="text/javascript" src="tarea-clase-5-2.js"></script>
+</body>
+
+</html>

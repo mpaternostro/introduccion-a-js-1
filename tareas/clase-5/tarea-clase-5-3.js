@@ -49,6 +49,36 @@ Ejemplo form:
 // al apretar el botón "Calcular tiempo total", debe mostrar en un
 // <strong> pre-creado el tiempo total de los videos.
 
+
+document.querySelector("#boton-calcular-duracion").onclick = function () {
+  const horasPrimerVideo = Number(document.querySelector("#horas-primer-video").value);
+  const minutosPrimerVideo = Number(document.querySelector("#minutos-primer-video").value);
+  const segundosPrimerVideo = Number(document.querySelector("#segundos-primer-video").value);
+  const horasSegundoVideo = Number(document.querySelector("#horas-segundo-video").value);
+  const minutosSegundoVideo = Number(document.querySelector("#minutos-segundo-video").value);
+  const segundosSegundoVideo = Number(document.querySelector("#segundos-segundo-video").value);
+  const horasTercerVideo = Number(document.querySelector("#horas-tercer-video").value);
+  const minutosTercerVideo = Number(document.querySelector("#minutos-tercer-video").value);
+  const segundosTercerVideo = Number(document.querySelector("#segundos-tercer-video").value);
+  calcularTiempoTotalVideos(horasPrimerVideo, horasSegundoVideo, horasTercerVideo, minutosPrimerVideo, minutosSegundoVideo, minutosTercerVideo, segundosPrimerVideo, segundosSegundoVideo, segundosTercerVideo);
+}
+
+function calcularTiempoTotalVideos(hora1, hora2, hora3, minutos1, minutos2, minutos3, segundos1, segundos2, segundos3) {
+  let horas = hora1 + hora2 + hora3;
+  let minutos = minutos1 + minutos2 + minutos3;
+  let segundos = segundos1 + segundos2 + segundos3;
+  while (segundos > 60) {
+    segundos -= 60;
+    minutos++;
+  }
+  while (minutos > 60) {
+    minutos -= 60;
+    horas++;
+  }
+  const $duracionTotal = (`La duración total de los videos es ${horas} horas, ${minutos} minutos y ${segundos} segundos.`);
+  document.querySelector("#duracion-total").value = $duracionTotal;
+}
+
 //TAREA: En otro archivo distinto,
 // Crear una lista de <ol> y <li> que contengan sólo números.
 // Convertir esos números a un array y:
