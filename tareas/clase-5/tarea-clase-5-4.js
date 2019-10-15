@@ -105,8 +105,8 @@ function calcularPromedio(arrayDeNumeros){
 }
 
 function calcularNumeroMasRepetido(arrayDeNumeros) {
-  let numeroMasRepetido = 0; // El numero X es el mas repetido
-  let numeroMasRepetidoTantasVeces = 0; // El numero X se repitió tantas veces
+  let numeroMasRepetido = 0;
+  let numeroMasRepetidoTantasVeces = 0;
   for (let i = 0; i < arrayDeNumeros.length; i++) {
     let k = 0;
     for (let j = 0; j < arrayDeNumeros.length; j++) {

@@ -49,20 +49,6 @@ Ejemplo form:
 // al apretar el botón "Calcular tiempo total", debe mostrar en un
 // <strong> pre-creado el tiempo total de los videos.
 
-/* document.querySelector("#boton-nuevo-video").onclick = function () {
-  console.log("clickeaste")
-  const $labelNuevoVideo = document.createElement("label");
-  $labelNuevoVideo.setAttribute("for", "duracion-segundo-video");
-  $labelNuevoVideo.innerHTML = "Video 2";
-  const duracionHoras = Number(document.createElement("input", placeholder = "Ingrese horas", id="duracion-segundo-video"));
-  const duracionMinutos = Number(document.createElement("input", placeholder = "Ingrese minutos", id="duracion-segundo-video"));
-  const duracionSegundos = Number(document.createElement("input", placeholder = "Ingrese segundos", id="duracion-segundo-video"));
-  document.querySelector("div").appendChild($labelNuevoVideo);
-  $labelNuevoVideo.appendChild(duracionHoras);
-  $labelNuevoVideo.appendChild(duracionMinutos);
-  $labelNuevoVideo.appendChild(duracionSegundos);
-}
-*/
 
 document.querySelector("#boton-calcular-duracion").onclick = function () {
   const horasPrimerVideo = Number(document.querySelector("#horas-primer-video").value);
@@ -89,7 +75,6 @@ function calcularTiempoTotalVideos(hora1, hora2, hora3, minutos1, minutos2, minu
     minutos -= 60;
     horas++;
   }
-  console.log(horas, minutos, segundos);
   const $duracionTotal = (`La duración total de los videos es ${horas} horas, ${minutos} minutos y ${segundos} segundos.`);
   document.querySelector("#duracion-total").value = $duracionTotal;
 }
