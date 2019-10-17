@@ -54,7 +54,7 @@ document.querySelector("#siguiente-paso").onclick = function () {
         //p2.removeChild(mostrarDatos);
         mostrarDatos.setAttribute("type", "text");
         mostrarDatos.setAttribute("id", "mostrar-datos")
-        mostrarDatos.textContent = `El integrante de mayor edad tiene ${calcularMayorEdad(edadIntegrantes)} años. El de menor edad tiene ${calcularMenorEdad(edadIntegrantes)}. La edad promedio de los integrantes es aproximadamente ${calcularPromedioEdades(edadIntegrantes)}.`;
+        mostrarDatos.textContent = `El integrante de mayor edad tiene ${calcularMayorEdad(edadIntegrantes)} años. El de menor edad tiene ${calcularMenorEdad(edadIntegrantes)} años. La edad promedio de los integrantes es aproximadamente ${calcularPromedioEdades(edadIntegrantes)} años.`;
         if (cuantosClickBotonCalcular === 1 ? p2.appendChild(document.createElement("br")) : false);
         p2.appendChild(mostrarDatos);
     }
