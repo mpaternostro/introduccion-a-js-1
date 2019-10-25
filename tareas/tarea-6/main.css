@@ -24,6 +24,7 @@ header {
     box-sizing: border-box;
     flex: 0 1 auto;
     text-align: center;
+    font-size: 400%;
 }
 
 h1 {
@@ -127,12 +128,8 @@ footer a:hover {
     color:white;
 }
 
-.mensaje-bienvenida{
-    color:darkblue;
-}
-
-.lista-de-numeros{
-    font-size: 16px;
+#inicio {
+    font-size: 200%;
 }
 
 #miembros-grupo-familiar {
@@ -143,7 +140,11 @@ footer a:hover {
 
 #informacion-ingresada{
     width: 400px;
-    height: 40px;
+    height: 100px;
+}
+
+#ultimo-paso{
+    display:none;
 }
 
 #surprise {
