@@ -21,8 +21,8 @@ let numeroIntegrante = 4;
 let primerCalculo = false;
 
 function calcular() {
-    const informacion = document.querySelector("#informacion-ingresada");
-    let arraySalarios = nuevoArraySalarios();
+    const informacion = document.querySelector("#resultado");
+    let arraySalarios = obtenerSalariosIntegrantes();
     informacion.textContent = `El mayor salario anual es $ ${mayorSalarioAnual(arraySalarios)}.\nEl menor salario anual es $ ${menorSalarioAnual(arraySalarios)}.\nEl salario anual promedio es $ ${salarioAnualPromedio(arraySalarios)}.\nEl salario mensual promedio es $ ${salarioMensualPromedio(salarioAnualPromedio(arraySalarios))}.`;
     document.querySelector("#ultimo-paso").style.display = "block";
 }
@@ -55,11 +55,13 @@ document.querySelector("#calcular").onclick = function () {
     primerCalculo = true;
 }
 
-function nuevoArraySalarios() {
-    let arraySalarios = [];
-    let cantidadIntegrantes = document.querySelectorAll("input").length;
+function obtenerSalariosIntegrantes() {
+    const arraySalarios = [];
+    const cantidadIntegrantes = document.querySelectorAll("input").length;
+    let integranteNumeroI;
     for (let i = 1; i <= cantidadIntegrantes; i++) {
-        (document.querySelector(`#integrante-${i}`).value > 0 ? arraySalarios.push(Number(document.querySelector(`#integrante-${i}`).value)) : false);
+        integranteNumeroI = document.querySelector(`#integrante-${i}`).value;
+        (integranteNumeroI > 0 ? arraySalarios.push(Number(integranteNumeroI)) : false);
     }
     return arraySalarios;
 }
@@ -67,7 +69,7 @@ function nuevoArraySalarios() {
 function mayorSalarioAnual(arraySalarios) {
     let salarioMasAlto = arraySalarios[0];
     for (let i = 1; i < arraySalarios.length; i++) {
-        (salarioMasAlto < arraySalarios[i] ? salarioMasAlto = arraySalarios[i] : false);
+        salarioMasAlto = (salarioMasAlto < arraySalarios[i] ? arraySalarios[i] : salarioMasAlto);
     }
     return salarioMasAlto;
 }
@@ -75,7 +77,7 @@ function mayorSalarioAnual(arraySalarios) {
 function menorSalarioAnual(arraySalarios) {
     let salarioMasBajo = arraySalarios[0];
     for (let i = 1; i < arraySalarios.length; i++) {
-        (salarioMasBajo > arraySalarios[i] ? salarioMasBajo = arraySalarios[i] : false);
+        salarioMasBajo = (salarioMasBajo > arraySalarios[i] ? arraySalarios[i] : salarioMasBajo);
     }
     return salarioMasBajo;
 }
