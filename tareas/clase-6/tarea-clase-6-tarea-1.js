@@ -7,13 +7,17 @@ Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuev
 */
 
 document.querySelector("#siguiente-paso").onclick = function () {
+    const numeroIntegrantes = Number(document.querySelector("#miembros-grupo-familiar").value);
+    if (validarCantidadIntegrantes(numeroIntegrantes) !== "") {
+        alert("Por favor revisar la cantidad de miembros ingresados.")
+        return;
+    }
     const formulario = document.querySelector("form");
     const p2 = document.createElement("p2");
     formulario.appendChild(p2);
     const pedirInfo = document.createTextNode("Ahora te voy a solicitar la edad de los integrantes de tu grupo familiar: ");
     p2.appendChild(pedirInfo);
     p2.appendChild(document.createElement("br"));
-    const numeroIntegrantes = Number(document.querySelector("#miembros-grupo-familiar").value);
     let cantidadIntegrantes;
     for (cantidadIntegrantes = 0; cantidadIntegrantes < numeroIntegrantes; cantidadIntegrantes++) {
         const labelNuevoIntegrante = document.createElement("label");
@@ -35,12 +39,11 @@ document.querySelector("#siguiente-paso").onclick = function () {
     botonEmpezarDeNuevo.setAttribute("type", "reset");
     botonEmpezarDeNuevo.setAttribute("id", "empezar-de-nuevo");
     botonEmpezarDeNuevo.textContent = "Empezar de nuevo";
-    //p2.appendChild(document.createElement("br"));
-    //document.querySelector(`#integrante-${cantidadIntegrantes}`).appendChild(document.createElement("br"));
     p2.appendChild(botonCalcular);
     p2.appendChild(botonEmpezarDeNuevo);
     const edadIntegrantes = [];
     let cuantosClickBotonCalcular = 0;
+
     document.querySelector("#calcular").onclick = function () {
         const p2 = document.querySelector("p2");
         if (cuantosClickBotonCalcular > 0) {
@@ -87,6 +90,16 @@ function calcularPromedioEdades(edadIntegrantes) {
         sumaEdades += edadIntegrantes[i];
     }
     return Math.floor(sumaEdades / edadIntegrantes.length);
+}
+
+function validarCantidadIntegrantes(cantidadIntegrantes) {
+    if (Number(cantidadIntegrantes) === 0) {
+        return "La cantidad de integrantes ingresada debe ser mayor o igual a 1";
+    }
+    if (Number(cantidadIntegrantes) > 100){
+        return "La cantidad de integrantes ingresada supero el máximo establecido";
+    }
+    return "";
 }
 
 /*
