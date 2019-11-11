@@ -22,16 +22,26 @@
             <form id="formulario">
                 <p1>
                     <label for="miembros-grupo-familiar">¿Cuantos integrantes hay en tu grupo familiar?</label><br>
-                    <em>Se estableció un mínimo de 1 integrante y un máximo de 100 integrantes</em><br>
+                    <em>Se estableció un mínimo de 2 integrantes y un máximo de 100 integrantes</em><br>
                     <input id="miembros-grupo-familiar" type="number"
                         placeholder="Por favor responder con números." /><br>
                     <button type="button" id="siguiente-paso">Siguiente paso</button><br><br>
                 </p1>
+                <p2 class="oculto">
+                    <em id="texto-2">Ahora te voy a solicitar la edad de los integrantes de tu grupo familiar: </em>
+                    <br>
+                    <button type="button" id="calcular">Calcular</button>
+                    <button type="reset" id="empezar-de-nuevo">Empezar de nuevo</button>
+                </p2>
             </form>
+            
+            <textarea type="text" id="mostrar-datos" class="oculto">Probando</textarea>
+            <ul id="errores"></ul>
         </div>
     </main>
 
     <script type="text/javascript" src="tarea-clase-6-tarea-1.js"></script>
+    <script type="text/javascript" src="calculos.js"></script>
     <script type="text/javascript" src="pruebas.js"></script>
 </body>
 
