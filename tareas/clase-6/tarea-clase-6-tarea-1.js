@@ -8,60 +8,83 @@ Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuev
 
 document.querySelector("#siguiente-paso").onclick = function () {
     const formulario = document.querySelector("form");
-    const p2 = document.createElement("p2");
-    formulario.appendChild(p2);
-    const pedirInfo = document.createTextNode("Ahora te voy a solicitar la edad de los integrantes de tu grupo familiar: ");
-    p2.appendChild(pedirInfo);
-    p2.appendChild(document.createElement("br"));
+    const inputs = document.querySelector('#inputs');
+    inputs.classList.remove('d-none');
+
+    // const p2 = document.createElement("p2");
+    // formulario.appendChild(p2);
+    // const pedirInfo = document.createTextNode("Ahora te voy a solicitar la edad de los integrantes de tu grupo familiar: ");
+    // p2.appendChild(pedirInfo);
+    // p2.appendChild(document.createElement("br"));
+
     const numeroIntegrantes = Number(document.querySelector("#miembros-grupo-familiar").value);
     let cantidadIntegrantes;
+
+    // for (cantidadIntegrantes = 0; cantidadIntegrantes < numeroIntegrantes; cantidadIntegrantes++) {
+    //     const labelNuevoIntegrante = document.createElement("label");
+    //     labelNuevoIntegrante.textContent = `${cantidadIntegrantes + 1}. `;
+    //     labelNuevoIntegrante.setAttribute("for", `integrante-${cantidadIntegrantes + 1}`);
+    //     const edadNuevoIntegrante = document.createElement("input");
+    //     edadNuevoIntegrante.setAttribute("id", `integrante-${cantidadIntegrantes + 1}`);
+    //     edadNuevoIntegrante.setAttribute("type", "number");
+    //     edadNuevoIntegrante.setAttribute("required", "");
+    //     p2.appendChild(labelNuevoIntegrante);
+    //     labelNuevoIntegrante.appendChild(edadNuevoIntegrante);
+    //     p2.appendChild(document.createElement("br"));
+    // }
+
     for (cantidadIntegrantes = 0; cantidadIntegrantes < numeroIntegrantes; cantidadIntegrantes++) {
-        const labelNuevoIntegrante = document.createElement("label");
-        labelNuevoIntegrante.textContent = `${cantidadIntegrantes + 1}. `;
-        labelNuevoIntegrante.setAttribute("for", `integrante-${cantidadIntegrantes + 1}`);
-        const edadNuevoIntegrante = document.createElement("input");
-        edadNuevoIntegrante.setAttribute("id", `integrante-${cantidadIntegrantes + 1}`);
-        edadNuevoIntegrante.setAttribute("type", "number");
-        edadNuevoIntegrante.setAttribute("required", "");
-        p2.appendChild(labelNuevoIntegrante);
-        labelNuevoIntegrante.appendChild(edadNuevoIntegrante);
-        p2.appendChild(document.createElement("br"));
+        let inputModelo = formulario.querySelector('#integrante-1');
+        let cloneInputModelo = inputModelo.cloneNode(true);
+        let childClone = cloneInputModelo.childNodes;
+        cloneInputModelo.setAttribute('id', `integrante-${cantidadIntegrantes + 4}`);
+        childClone[1].setAttribute('placeholder', `Integrante ${cantidadIntegrantes + 4}`);
+        inputs.appendChild(cloneInputModelo);
     }
-    const botonCalcular = document.createElement("button");
-    botonCalcular.setAttribute("type", "button");
-    botonCalcular.setAttribute("id", "calcular");
-    botonCalcular.textContent = "Calcular";
-    const botonEmpezarDeNuevo = document.createElement("button");
-    botonEmpezarDeNuevo.setAttribute("type", "reset");
-    botonEmpezarDeNuevo.setAttribute("id", "empezar-de-nuevo");
-    botonEmpezarDeNuevo.textContent = "Empezar de nuevo";
-    //p2.appendChild(document.createElement("br"));
-    //document.querySelector(`#integrante-${cantidadIntegrantes}`).appendChild(document.createElement("br"));
-    p2.appendChild(botonCalcular);
-    p2.appendChild(botonEmpezarDeNuevo);
-    const edadIntegrantes = [];
-    let cuantosClickBotonCalcular = 0;
-    document.querySelector("#calcular").onclick = function () {
-        const p2 = document.querySelector("p2");
-        if (cuantosClickBotonCalcular > 0) {
-            p2.removeChild(document.querySelector("textarea"));
-        }
-        cuantosClickBotonCalcular++;
-        for (let i = 0; i < cantidadIntegrantes; i++) {
-            edadIntegrantes.push(Number(document.querySelector(`#integrante-${i + 1}`).value));
-        }
-        const mostrarDatos = document.createElement("textarea");
-        //p2.removeChild(mostrarDatos);
-        mostrarDatos.setAttribute("type", "text");
-        mostrarDatos.setAttribute("id", "mostrar-datos")
-        mostrarDatos.textContent = `El integrante de mayor edad tiene ${calcularMayorEdad(edadIntegrantes)} años. El de menor edad tiene ${calcularMenorEdad(edadIntegrantes)} años. La edad promedio de los integrantes es aproximadamente ${calcularPromedioEdades(edadIntegrantes)} años.`;
-        if (cuantosClickBotonCalcular === 1 ? p2.appendChild(document.createElement("br")) : false);
-        p2.appendChild(mostrarDatos);
-    }
-    document.querySelector("#empezar-de-nuevo").onclick = function () {
-        formulario.removeChild(document.querySelector("p2"));
-        document.querySelector("#miembros-grupo-familiar").value = "";
-    }
+
+    const botonCalcular = document.querySelector('#calcular');
+    botonCalcular.classList.remove('d-none');
+    const botonEmpezarDeNuevo = document.querySelector('#empezar-de-nuevo');
+    botonEmpezarDeNuevo.classList.remove('d-none');
+
+
+    // const botonCalcular = document.createElement("button");
+    // botonCalcular.setAttribute("type", "button");
+    // botonCalcular.setAttribute("id", "calcular");
+    // botonCalcular.textContent = "Calcular";
+    // const botonEmpezarDeNuevo = document.createElement("button");
+    // botonEmpezarDeNuevo.setAttribute("type", "reset");
+    // botonEmpezarDeNuevo.setAttribute("id", "empezar-de-nuevo");
+    // botonEmpezarDeNuevo.textContent = "Empezar de nuevo";
+    // //p2.appendChild(document.createElement("br"));
+    // //document.querySelector(`#integrante-${cantidadIntegrantes}`).appendChild(document.createElement("br"));
+    // p2.appendChild(botonCalcular);
+    // p2.appendChild(botonEmpezarDeNuevo);
+    // const edadIntegrantes = [];
+    // let cuantosClickBotonCalcular = 0;
+
+    
+    // document.querySelector("#calcular").onclick = function () {
+    //     const p2 = document.querySelector("p2");
+    //     if (cuantosClickBotonCalcular > 0) {
+    //         p2.removeChild(document.querySelector("textarea"));
+    //     }
+    //     cuantosClickBotonCalcular++;
+    //     for (let i = 0; i < cantidadIntegrantes; i++) {
+    //         edadIntegrantes.push(Number(document.querySelector(`#integrante-${i + 1}`).value));
+    //     }
+    //     const mostrarDatos = document.createElement("textarea");
+    //     //p2.removeChild(mostrarDatos);
+    //     mostrarDatos.setAttribute("type", "text");
+    //     mostrarDatos.setAttribute("id", "mostrar-datos")
+    //     mostrarDatos.textContent = `El integrante de mayor edad tiene ${calcularMayorEdad(edadIntegrantes)} años. El de menor edad tiene ${calcularMenorEdad(edadIntegrantes)} años. La edad promedio de los integrantes es aproximadamente ${calcularPromedioEdades(edadIntegrantes)} años.`;
+    //     if (cuantosClickBotonCalcular === 1 ? p2.appendChild(document.createElement("br")) : false);
+    //     p2.appendChild(mostrarDatos);
+    // }
+    // document.querySelector("#empezar-de-nuevo").onclick = function () {
+    //     formulario.removeChild(document.querySelector("p2"));
+    //     document.querySelector("#miembros-grupo-familiar").value = "";
+    // }
     return false;
 }
 

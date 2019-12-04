@@ -9,40 +9,40 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=GFS+Didot">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200">
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="main.css"> -->
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body>
     <header>
-        <h1>Calculador de estadisticas para integrantes familiares</h1>
+        <!-- <h1>Calculador de estadisticas para integrantes familiares</h1> -->
     </header>
 
     <main>
-        <div>
-
-            <form id=formulario>
-                <div class="form-group">
-                    <label for="miembros-grupo-familiar">¿Cuantos integrantes hay en tu grupo familiar?</label>
-                    <input type="number" class="form-control" id="miembros-grupo-familiar" aria-describedby="emailHelp"
-                        placeholder="Por favor responder con números">
-                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                        else.</small> -->
+        <form id=formulario>
+            <div class="form-group">
+                <label for="miembros-grupo-familiar">¿Cuantos integrantes hay en tu grupo familiar?</label>
+                <input type="number" class="form-control" id="miembros-grupo-familiar" aria-describedby="emailHelp"
+                    placeholder="Por favor responder con números">
+            </div>
+            <button type="submit" class="btn btn-primary" id="siguiente-paso">Submit</button>
+            <div id="inputs" class='d-none'> Ahora te voy a solicitar la edad de los integrantes de tu grupo familiar: 
+                <div class="input-group mb-3" id='integrante-1'>
+                    <input type="number" class="form-control" placeholder="Integrante 1">
                 </div>
-                <!-- <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <div class="input-group mb-3" id='integrante-2'>
+                    <input type="number" class="form-control" placeholder="Integrante 2">
                 </div>
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div> -->
-                <button type="submit" class="btn btn-primary" id="siguiente-paso">Submit</button>
-            </form>
+                <div class="input-group mb-3" id='integrante-3'>
+                    <input type="number" class="form-control" placeholder="Integrante 3">
+                </div>
+            </div>
+            <button type="button" id='calcular' class="btn btn-primary d-none">Calcular</button>
+            <button type="reset" id='empezar-de-nuevo' class="btn btn-primary d-none">Empezar de nuevo</button>
+        </form>
 
 
-            <!-- <form id="formulario">
+        <!-- <form id="formulario">
                 <p1>
                     <label for="miembros-grupo-familiar">¿Cuantos integrantes hay en tu grupo familiar?</label><br>
                     <input id="miembros-grupo-familiar" type="number"
