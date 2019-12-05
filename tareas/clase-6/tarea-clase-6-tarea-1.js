@@ -5,10 +5,15 @@ Al hacer click en "calcular", mostrar en un elemento pre-existente la mayor edad
 
 Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuevamente, borrando los inputs ya creados (investigar cómo en MDN).
 */
+const botonSiguientePaso = document.querySelector('#siguiente-paso');
 
-document.querySelector("#siguiente-paso").onclick = function () {
+botonSiguientePaso.onclick = function () {
     const $numeroIntegrantes = document.querySelector("#miembros-grupo-familiar");
     const cantidadIntegrantes = Number($numeroIntegrantes.value);
+    const formulario = document.querySelector("form");
+    const inputs = document.querySelector('#inputs');
+    const divInputs = document.querySelector('.input-group');
+    
     limpiarErrores();
     if (validarVacio($numeroIntegrantes.value) === "") {
         if (validarCantidadIntegrantes(cantidadIntegrantes) !== "") {
@@ -21,52 +26,55 @@ document.querySelector("#siguiente-paso").onclick = function () {
         mostrarErrorVacio($numeroIntegrantes.value);
         return;
     }
-    ocultar(document.querySelector("p1"));
-    const p2 = document.querySelector("p2");
-    const texto = document.querySelector("#texto-2");
-    p2.style.display = "block";
-    for (let i = 0; i < cantidadIntegrantes; i++) {
-        texto.appendChild(document.createElement("br"));
-        const labelNuevoIntegrante = document.createElement("label");
-        labelNuevoIntegrante.textContent = `${i + 1}. `;
-        labelNuevoIntegrante.setAttribute("for", `integrante-${i + 1}`);
-        const edadNuevoIntegrante = document.createElement("input");
-        edadNuevoIntegrante.setAttribute("id", `integrante-${i + 1}`);
-        edadNuevoIntegrante.setAttribute("type", "number");
-        texto.appendChild(labelNuevoIntegrante);
-        labelNuevoIntegrante.appendChild(edadNuevoIntegrante);
+    ocultarPrimeraPantalla();
+    
+    for (let i = 1; i < cantidadIntegrantes; i++) {
+        let inputModelo = formulario.querySelector('#integrante-1');
+        let cloneInputModelo = inputModelo.cloneNode(true);
+        let cloneDivInputs = divInputs.cloneNode(false);
+        cloneInputModelo.setAttribute('id', `integrante-${i + 1}`);
+        cloneInputModelo.setAttribute('placeholder', `Integrante ${i + 1}`);
+        cloneInputModelo.value = '';
+        cloneDivInputs.appendChild(cloneInputModelo);
+        inputs.appendChild(cloneDivInputs);
     }
 
-    document.querySelector("#calcular").onclick = function () {
-        limpiarErrores();
-        const edadIntegrantes = [];
-        const $mostrarDatos = document.querySelector("#mostrar-datos");
-        $mostrarDatos.style.display = "none";
-        for (let i = 1; i <= cantidadIntegrantes; i++) {
-            let $integrante = document.querySelector(`#integrante-${i}`);
-            let edad = Number($integrante.value);
-            $integrante.className = $integrante.className.replace(/\berror\b/g, "");
-            edadIntegrantes.push(edad);
-            if (validarVacio($integrante.value) === "") {
-                if (validarEdadIntegrantes(edadIntegrantes[i - 1]) != "") {
-                    marcarComoError($integrante);
-                    mostrarErroresEdades(edad);
-                }
-            } else {
-                marcarComoError($integrante);
-                mostrarErrorVacio($integrante.value);
-            }
-        }
-        const $errores = document.querySelector("#errores").textContent;
-        if ($errores === "") {
-            $mostrarDatos.textContent = `El integrante de mayor edad tiene ${calcularMayorEdad(edadIntegrantes)} años. El de menor edad tiene ${calcularMenorEdad(edadIntegrantes)} años. La edad promedio de los integrantes es aproximadamente ${calcularPromedioEdades(edadIntegrantes)} años.`;
-            $mostrarDatos.style.display = "block";
-        } else {
-            return;
-        }
-    }
+    const botonCalcular = document.querySelector('#calcular');
+    botonCalcular.classList.remove('d-none');
+    const botonReset = document.querySelector('#empezar-de-nuevo');
+    botonReset.classList.remove('d-none');
+
+    // document.querySelector("#calcular").onclick = function () {
+    //     limpiarErrores();
+    //     const edadIntegrantes = [];
+    //     const $mostrarDatos = document.querySelector("#mostrar-datos");
+    //     // $mostrarDatos.style.display = "none";
+    //     for (let i = 1; i <= cantidadIntegrantes; i++) {
+    //         let $integrante = document.querySelector(`#integrante-${i}`);
+    //         let edad = Number($integrante.value);
+    //         //$integrante.className = $integrante.className.replace(/\berror\b/g, "");
+    //         edadIntegrantes.push(edad);
+    //         if (validarVacio(edad) === "") {
+    //             if (validarEdadIntegrantes(edadIntegrantes[i - 1]) != "") {
+    //                 marcarComoError($integrante);
+    //                 mostrarErroresEdades(edad);
+    //             }
+    //         } else {
+    //             marcarComoError($integrante);
+    //             mostrarErrorVacio($integrante.value);
+    //         }
+    //     }
+    //     const $errores = document.querySelector("#errores").textContent;
+    //     if ($errores === "") {
+    //         $mostrarDatos.textContent = `El integrante de mayor edad tiene ${calcularMayorEdad(edadIntegrantes)} años. El de menor edad tiene ${calcularMenorEdad(edadIntegrantes)} años. La edad promedio de los integrantes es aproximadamente ${calcularPromedioEdades(edadIntegrantes)} años.`;
+    //         $mostrarDatos.style.display = "block";
+    //     } else {
+    //         return;
+    //     }
+    // }
+
     document.querySelector("#empezar-de-nuevo").onclick = function () {
-       window.location.href = "index-clase-6-tarea-1.html";
+        window.location.href = "index-clase-6-tarea-1.html";
     }
 }
 
@@ -74,15 +82,24 @@ function ocultar(valor) {
     valor.style.display = "none";
 }
 
+function ocultarPrimeraPantalla () {
+    const primeraPantalla = document.querySelector('.form-group');
+    primeraPantalla.classList.add('d-none');
+    botonSiguientePaso.classList.add('d-none');
+    inputs.classList.remove('d-none');
+}
+
 function marcarComoError(campo) {
-    campo.className = "error";
+    campo.classList.add('alert-danger');
 }
 
 function mostrarErrorIntegrante(valor) {
     const errores = document.querySelector("#errores");
     const li = document.createElement("li");
+    li.classList.add('list-group-item');
     li.textContent = validarCantidadIntegrantes(valor);
     errores.appendChild(li);
+    errores.classList.remove('d-none');
 }
 
 function mostrarErroresEdades(valor) {
@@ -96,7 +113,14 @@ function mostrarErrorVacio(valor) {
     const errores = document.querySelector("#errores");
     const li = document.createElement("li");
     li.textContent = validarVacio(valor);
+    li.classList.add('list-group-item');
     errores.appendChild(li);
+    mostrarErrores();
+}
+
+function mostrarErrores() {
+    const errores = document.querySelector("#errores");
+    errores.classList.remove('d-none');
 }
 
 function limpiarErrores() {
