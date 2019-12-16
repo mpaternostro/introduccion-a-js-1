@@ -7,7 +7,10 @@
     "doc": "doc"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "empezar": "http-server",
+    "cypress-run": "cypress run",
+    "cypress-open": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -20,7 +23,8 @@
   },
   "homepage": "https://github.com/mpaternostro/introduccion-a-js-1#readme",
   "dependencies": {
-    "bootstrap": "^4.4.1"
+    "bootstrap": "^4.4.1",
+    "http-server": "^0.12.0"
   },
   "devDependencies": {
     "cypress": "^3.8.0"
