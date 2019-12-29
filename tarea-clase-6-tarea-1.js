@@ -26,7 +26,7 @@ botonSiguientePaso.onclick = function () {
         mostrarErrorVacio($numeroIntegrantes.value);
         return;
     }
-    ocultarPrimeraPantalla();
+    ocultarPrimeraPantalla($numeroIntegrantes);
 
     for (let i = 1; i < cantidadIntegrantes; i++) {
         let inputModelo = formulario.querySelector('#integrante-1');
@@ -48,7 +48,6 @@ botonSiguientePaso.onclick = function () {
         limpiarErrores();
         const edadIntegrantes = [];
         const $mostrarDatos = document.querySelector("#mostrar-datos");
-        // $mostrarDatos.style.display = "none";
         for (let i = 1; i <= cantidadIntegrantes; i++) {
             let $integrante = document.querySelector(`#integrante-${i}`);
             let edad = Number($integrante.value);
@@ -83,11 +82,12 @@ function ocultar(valor) {
     valor.style.display = "none";
 }
 
-function ocultarPrimeraPantalla() {
+function ocultarPrimeraPantalla(integrantes) {
     const primeraPantalla = document.querySelector('.form-group');
     primeraPantalla.classList.add('d-none');
     botonSiguientePaso.classList.add('d-none');
     inputs.classList.remove('d-none');
+    integrantes.classList.remove('alert-danger');
 }
 
 function marcarComoError(campo) {
