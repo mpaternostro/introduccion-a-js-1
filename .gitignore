@@ -105,3 +105,6 @@ dist
 
 # Archivos de prueba
 **/*-PRUEBA.*
+
+# Archivos .DS_Store
+.DS_Store
