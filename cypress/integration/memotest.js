@@ -1,3 +1,5 @@
+/// <reference types="Cypress" />
+
 const URL = 'http://127.0.0.1:8080/index-clase-6-tarea-1.html';
 
 const MINIMA_CANTIDAD_INTEGRANTES = 2;
